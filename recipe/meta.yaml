@@ -34,6 +34,7 @@ test:
 about:
   home: https://www.ebi.ac.uk/chembldb/index.php/ws
   license: Apache-2.0
+  license_file: LICENSE
   license_family: Apache
   summary: Provides a simple way of standardising molecules as a prelude to e.g. molecular modelling exercises. 
   dev_url: https://github.com/flatkinson/standardiser
