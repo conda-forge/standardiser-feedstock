@@ -6,12 +6,12 @@ package:
   version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 611f520b999058026380b506da593e072f566d351e68e4cd1d8f7e8cd7728c82
 
 build:
   noarch: python
-  number: 0
+  number: 1
   entry_points:
     - standardise-mols=standardiser.bin.standardise_mols:main
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
@@ -19,12 +19,14 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
-    - python
+    - python >={{ python_min }}
     - rdkit
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - standardiser
     - standardiser.bin
